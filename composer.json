@@ -1,0 +1,46 @@
+{
+    "name": "laravel-package-starter-kit/laravel-package-starter-kit",
+    "description": "Laravel Package Starter Kit - A professional foundation for building Laravel packages",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "İbrahim Yakut",
+            "email": "yktibrahim@gmail.com",
+            "homepage": "https://github.com/yktibrahim"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0|^7.0|^8.0",
+        "phpunit/phpunit": "^9.0|^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelPackageStarterKit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaravelPackageStarterKit\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelPackageStarterKit\\LaravelPackageStarterKitServiceProvider"
+            ],
+            "aliases": {
+                "LaravelPackageStarterKit": "LaravelPackageStarterKit\\Facades\\LaravelPackageStarterKit"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+} 
