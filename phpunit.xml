@@ -3,7 +3,11 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
-         colors="true">
+         colors="true"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnTestsThatTriggerNotices="true"
+         displayDetailsOnTestsThatTriggerErrors="true">
     <!-- Test Suites / Test Takımları -->
     <testsuites>
         <!-- Feature Tests / Özellik Testleri -->
@@ -16,11 +20,11 @@
         </testsuite>
     </testsuites>
     <!-- Code Coverage Configuration / Kod Kapsama Yapılandırması -->
-    <coverage processUncoveredFiles="true">
+    <source>
         <include>
             <directory suffix=".php">./src</directory>
         </include>
-    </coverage>
+    </source>
     <!-- Environment Variables / Ortam Değişkenleri -->
     <php>
         <env name="APP_ENV" value="testing"/>
