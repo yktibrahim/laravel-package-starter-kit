@@ -3,6 +3,8 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-package-starter-kit/laravel-package-starter-kit.svg?style=flat-square)](https://packagist.org/packages/laravel-package-starter-kit/laravel-package-starter-kit)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-package-starter-kit/laravel-package-starter-kit.svg?style=flat-square)](https://packagist.org/packages/laravel-package-starter-kit/laravel-package-starter-kit)
 [![License](https://img.shields.io/packagist/l/laravel-package-starter-kit/laravel-package-starter-kit.svg?style=flat-square)](https://packagist.org/packages/laravel-package-starter-kit/laravel-package-starter-kit)
+[![GitHub release](https://img.shields.io/github/release/yktibrahim/laravel-package-starter-kit.svg?style=flat-square)](https://github.com/yktibrahim/laravel-package-starter-kit/releases)
+[![GitHub stars](https://img.shields.io/github/stars/yktibrahim/laravel-package-starter-kit.svg?style=flat-square)](https://github.com/yktibrahim/laravel-package-starter-kit/stargazers)
 
 Professional starter kit for creating Laravel packages with all necessary boilerplate.
 
