@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Facade;
  * @author İbrahim Yakut <yktibrahim@gmail.com>
  * @package LaravelPackageStarterKit\Facades
  * 
- * @method static mixed doSomething()
+ * @method static string doSomething()
+ * @method static string getVersion()
  * @see \LaravelPackageStarterKit\LaravelPackageStarterKit
  */
 class LaravelPackageStarterKit extends Facade

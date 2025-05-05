@@ -30,22 +30,27 @@ class SeedCommand extends Command
     {
         $class = $this->option('class');
         
-        $this->info('Running seeder: ' . $class);
+        $this->components->info('Running seeder: ' . $class);
         
         $params = ['--class' => "Database\\Seeders\\{$class}"];
         
-        if ($this->confirm('Do you wish to run this seeder?', true)) {
-            $result = Artisan::call('db:seed', $params);
-            
-            if ($result === 0) {
-                $this->info('Seeder run successfully!');
-                return 0;
-            } else {
-                $this->error('Seeder failed to run. Make sure the class exists.');
-                return 1;
+        if ($this->components->confirm('Do you wish to run this seeder?', true)) {
+            try {
+                $result = Artisan::call('db:seed', $params);
+                
+                if ($result === 0) {
+                    $this->components->info('Seeder run successfully!');
+                    return Command::SUCCESS;
+                } else {
+                    $this->components->error('Seeder failed to run. Make sure the class exists.');
+                    return Command::FAILURE;
+                }
+            } catch (\Exception $e) {
+                $this->components->error('Error running seeder: ' . $e->getMessage());
+                return Command::FAILURE;
             }
         }
         
-        return 2;
+        return Command::INVALID;
     }
 } 

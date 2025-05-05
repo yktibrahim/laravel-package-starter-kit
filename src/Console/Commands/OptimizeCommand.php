@@ -28,13 +28,13 @@ class OptimizeCommand extends Command
      */
     public function handle(): int
     {
-        $this->info('Optimizing Laravel Package Starter Kit...');
+        $this->components->info('Optimizing Laravel Package Starter Kit...');
         
         // Burada paketinizin optimize edilmesi için gereken işlemleri yapabilirsiniz
         // Örneğin: Önbellekleme, dosya derleme vb.
         
-        $this->info('Laravel Package Starter Kit successfully optimized!');
+        $this->components->info('Laravel Package Starter Kit successfully optimized!');
         
-        return 0;
+        return Command::SUCCESS;
     }
 } 

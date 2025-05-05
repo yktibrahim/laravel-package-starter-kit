@@ -28,13 +28,13 @@ class ClearOptimizationsCommand extends Command
      */
     public function handle(): int
     {
-        $this->info('Clearing optimizations for Laravel Package Starter Kit...');
+        $this->components->info('Clearing optimizations for Laravel Package Starter Kit...');
         
         // Burada paketinizin optimize temizleme işlemleri yapılabilir
         // Örneğin: Önbellek temizleme, derlenmiş dosyaların temizlenmesi vb.
         
-        $this->info('Laravel Package Starter Kit optimizations cleared successfully!');
+        $this->components->info('Laravel Package Starter Kit optimizations cleared successfully!');
         
-        return 0;
+        return Command::SUCCESS;
     }
 } 

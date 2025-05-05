@@ -18,6 +18,26 @@ use LaravelPackageStarterKit\Console\Commands\ClearOptimizationsCommand;
 class LaravelPackageStarterKitServiceProvider extends ServiceProvider
 {
     /**
+     * All of the container bindings that should be registered.
+     *
+     * @var array
+     */
+    public $bindings = [
+        'laravel-package-starter-kit' => LaravelPackageStarterKit::class,
+    ];
+
+    /**
+     * Paket komutları listesi.
+     * 
+     * @var array
+     */
+    protected $commands = [
+        SeedCommand::class,
+        OptimizeCommand::class,
+        ClearOptimizationsCommand::class,
+    ];
+
+    /**
      * Register services.
      * Servisleri kayıt eder.
      *
@@ -29,9 +49,8 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
             __DIR__.'/Config/laravelpackagestarterkit.php', 'laravelpackagestarterkit'
         );
 
-        $this->app->bind('laravel-package-starter-kit', function () {
-            return new LaravelPackageStarterKit();
-        });
+        // Komutları kaydet
+        $this->commands($this->commands);
     }
 
     /**
@@ -86,16 +105,9 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
             __DIR__.'/Database/Factories' => database_path('factories'),
         ], 'laravelpackagestarterkit-factories');
 
-        // Register commands
-        // Komutları kaydet
+        // Register commands in console only
+        // Komutları sadece konsolda kaydet
         if ($this->app->runningInConsole()) {
-            $this->commands([
-                SeedCommand::class,
-                OptimizeCommand::class,
-                ClearOptimizationsCommand::class,
-                // Buraya diğer komutlar eklenebilir
-            ]);
-            
             // Register optimize commands
             // Optimize komutlarını kaydet
             $this->optimizes(

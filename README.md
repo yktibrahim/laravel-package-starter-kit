@@ -38,6 +38,8 @@ composer require laravel-package-starter-kit/laravel-package-starter-kit
 
 **Laravel 12+** paketi otomatik olarak keşfedecektir.
 
+> **Not**: Paket yüklendikten sonra, varsa önbelleği temizlemeniz gerekebilir: `php artisan optimize:clear`
+
 ## Configuration / Yapılandırma
 
 Publish the configuration file:
@@ -149,6 +151,9 @@ Paket için kullanım talimatları.
 ```php
 // Example code / Örnek kod
 LaravelPackageStarterKit::doSomething();
+
+// Get package version / Paket versiyonunu alma
+$version = LaravelPackageStarterKit::getVersion();
 ```
 
 ## Testing / Test
@@ -160,6 +165,20 @@ Testleri çalıştırın:
 ```bash
 composer test
 ```
+
+## Troubleshooting / Sorun Giderme
+
+If commands are not available after installation, try clearing the cache:
+
+Yüklemeden sonra komutlar kullanılamıyorsa, önbelleği temizlemeyi deneyin:
+
+```bash
+php artisan optimize:clear
+```
+
+For Laravel 12+, make sure your command classes are registered in the ServiceProvider and also listed in the `commands` section of the `extra.laravel` section in your `composer.json` file.
+
+Laravel 12+ için, komut sınıflarınızın ServiceProvider'da kaydedildiğinden ve ayrıca `composer.json` dosyanızdaki `extra.laravel` bölümünün `commands` kısmında listelendiğinden emin olun.
 
 ## Changelog / Değişiklik Kaydı
 
