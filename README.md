@@ -1,10 +1,8 @@
 # Laravel Package Starter Kit
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-package-starter-kit/laravel-package-starter-kit.svg?style=flat-square)](https://packagist.org/packages/laravel-package-starter-kit/laravel-package-starter-kit)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-package-starter-kit/laravel-package-starter-kit.svg?style=flat-square)](https://packagist.org/packages/laravel-package-starter-kit/laravel-package-starter-kit)
-[![License](https://img.shields.io/packagist/l/laravel-package-starter-kit/laravel-package-starter-kit.svg?style=flat-square)](https://packagist.org/packages/laravel-package-starter-kit/laravel-package-starter-kit)
-[![GitHub release](https://img.shields.io/github/release/yktibrahim/laravel-package-starter-kit.svg?style=flat-square)](https://github.com/yktibrahim/laravel-package-starter-kit/releases)
-[![GitHub stars](https://img.shields.io/github/stars/yktibrahim/laravel-package-starter-kit.svg?style=flat-square)](https://github.com/yktibrahim/laravel-package-starter-kit/stargazers)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-blue)](composer.json)
+[![Laravel Version](https://img.shields.io/badge/Laravel-8.0%2B%20%7C%209.0%2B%20%7C%2010.0%2B-red)](composer.json)
 
 Professional starter kit for creating Laravel packages with all necessary boilerplate.
 
