@@ -3,6 +3,7 @@
 namespace LaravelPackageStarterKit;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Console\AboutCommand;
 
 /**
  * Laravel Package Starter Kit Service Provider
@@ -19,11 +20,15 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/Config/laravelpackagestarterkit.php', 'laravelpackagestarterkit'
         );
+
+        $this->app->bind('laravel-package-starter-kit', function () {
+            return new LaravelPackageStarterKit();
+        });
     }
 
     /**
@@ -32,27 +37,27 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // Configuration publishing
         // Yapılandırma dosyasını yayınlama
         $this->publishes([
             __DIR__.'/Config/laravelpackagestarterkit.php' => config_path('laravelpackagestarterkit.php'),
-        ], 'config');
+        ], 'laravelpackagestarterkit-config');
 
         // Views
         // Görünümler
         $this->loadViewsFrom(__DIR__.'/Resources/Views', 'laravelpackagestarterkit');
         $this->publishes([
             __DIR__.'/Resources/Views' => resource_path('views/vendor/laravelpackagestarterkit'),
-        ], 'views');
+        ], 'laravelpackagestarterkit-views');
 
         // Translations
         // Çeviriler
         $this->loadTranslationsFrom(__DIR__.'/Resources/Lang', 'laravelpackagestarterkit');
         $this->publishes([
             __DIR__.'/Resources/Lang' => resource_path('lang/vendor/laravelpackagestarterkit'),
-        ], 'translations');
+        ], 'laravelpackagestarterkit-translations');
 
         // Routes
         // Rotalar
@@ -64,6 +69,15 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/Database/Migrations');
         $this->publishes([
             __DIR__.'/Database/Migrations' => database_path('migrations'),
-        ], 'migrations');
+        ], 'laravelpackagestarterkit-migrations');
+
+        // Register the package version with the About command
+        // About komutu için paket versiyonunu kaydet
+        if ($this->app->runningInConsole()) {
+            AboutCommand::add('Laravel Package Starter Kit', fn () => [
+                'Version' => '1.0.0', 
+                'Laravel Versions' => '12.x'
+            ]);
+        }
     }
 } 

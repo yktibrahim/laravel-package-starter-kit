@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Facade;
  *
  * @author İbrahim Yakut <yktibrahim@gmail.com>
  * @package LaravelPackageStarterKit\Facades
+ * 
+ * @method static mixed doSomething()
+ * @see \LaravelPackageStarterKit\LaravelPackageStarterKit
  */
 class LaravelPackageStarterKit extends Facade
 {
@@ -19,8 +22,8 @@ class LaravelPackageStarterKit extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
-        return 'laravelpackagestarterkit';
+        return 'laravel-package-starter-kit';
     }
 } 

@@ -1,12 +1,23 @@
 # Laravel Package Starter Kit
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-blue)](composer.json)
-[![Laravel Version](https://img.shields.io/badge/Laravel-8.0%2B%20%7C%209.0%2B%20%7C%2010.0%2B-red)](composer.json)
+[![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-blue)](composer.json)
+[![Laravel Version](https://img.shields.io/badge/Laravel-12.0%2B-red)](composer.json)
 
 Professional starter kit for creating Laravel packages with all necessary boilerplate.
 
 Laravel paketleri oluşturmak için gerekli tüm hazır kodlarla profesyonel bir başlangıç kiti.
+
+## Features / Özellikler
+
+- Supports Laravel 12.x / Laravel 12.x destekler
+- Modern PHP 8.2+ features / Modern PHP 8.2+ özellikleri
+- Package Auto-Discovery / Paket Otomatik Keşif
+- Service Provider included / Servis Sağlayıcı dahil
+- Facade included / Facade dahil
+- Configuration publishing / Yapılandırma dosyası yayınlama
+- Migration publishing / Migrasyon dosyası yayınlama
+- Ready for testing with Orchestra Testbench / Orchestra Testbench ile test için hazır
 
 ## Installation / Kurulum
 
