@@ -16,96 +16,74 @@ use LaravelPackageStarterKit\Console\Commands\SeedCommand;
 class LaravelPackageStarterKitServiceProvider extends ServiceProvider
 {
     /**
-     * All of the container bindings that should be registered.
-     *
-     * @var array
-     */
-    public $bindings = [
-        'laravel-package-starter-kit' => LaravelPackageStarterKit::class,
-    ];
-
-    /**
-     * Paket komutları listesi.
-     * 
-     * @var array
-     */
-    protected $commands = [
-        SeedCommand::class,
-    ];
-
-    /**
-     * Register services.
-     * Servisleri kayıt eder.
-     *
-     * @return void
+     * Register any application services.
      */
     public function register(): void
     {
+        // Bind the main package class
+        $this->app->bind('laravel-package-starter-kit', function () {
+            return new LaravelPackageStarterKit();
+        });
+
+        // Merge config
         $this->mergeConfigFrom(
             __DIR__.'/Config/laravelpackagestarterkit.php', 'laravelpackagestarterkit'
         );
 
-        // Komutları kaydet
-        $this->commands($this->commands);
+        // Register commands
+        $this->app->singleton(SeedCommand::class, function () {
+            return new SeedCommand();
+        });
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                SeedCommand::class,
+            ]);
+        }
     }
 
     /**
-     * Bootstrap services.
-     * Servisleri başlatır.
-     *
-     * @return void
+     * Bootstrap any application services.
      */
     public function boot(): void
     {
         // Configuration publishing
-        // Yapılandırma dosyasını yayınlama
         $this->publishes([
             __DIR__.'/Config/laravelpackagestarterkit.php' => config_path('laravelpackagestarterkit.php'),
         ], 'laravelpackagestarterkit-config');
 
         // Views
-        // Görünümler
         $this->loadViewsFrom(__DIR__.'/Resources/Views', 'laravelpackagestarterkit');
         $this->publishes([
             __DIR__.'/Resources/Views' => resource_path('views/vendor/laravelpackagestarterkit'),
         ], 'laravelpackagestarterkit-views');
 
         // Translations
-        // Çeviriler
         $this->loadTranslationsFrom(__DIR__.'/Resources/Lang', 'laravelpackagestarterkit');
         $this->publishes([
             __DIR__.'/Resources/Lang' => resource_path('lang/vendor/laravelpackagestarterkit'),
         ], 'laravelpackagestarterkit-translations');
 
         // Routes
-        // Rotalar
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
 
         // Migrations
-        // Migrasyonlar
         $this->loadMigrationsFrom(__DIR__.'/Database/Migrations');
         $this->publishes([
             __DIR__.'/Database/Migrations' => database_path('migrations'),
         ], 'laravelpackagestarterkit-migrations');
 
-        // Seeders
-        // Tohumlayıcılar
+        // Seeders & Factories
         $this->publishes([
             __DIR__.'/Database/Seeders' => database_path('seeders'),
         ], 'laravelpackagestarterkit-seeders');
-
-        // Factories
-        // Fabrikalar
         $this->publishes([
             __DIR__.'/Database/Factories' => database_path('factories'),
         ], 'laravelpackagestarterkit-factories');
 
-        // Register commands in console only
-        // Komutları sadece konsolda kaydet
+        // Register package info
         if ($this->app->runningInConsole()) {
-            // Register the package version with the About command
-            // About komutu için paket versiyonunu kaydet
             AboutCommand::add('Laravel Package Starter Kit', fn () => [
                 'Version' => '1.0.0', 
                 'Laravel Versions' => '12.x',
