@@ -21,6 +21,7 @@ Laravel paketleri oluşturmak için gerekli tüm hazır kodlarla profesyonel bir
 - Migration publishing / Migrasyon dosyası yayınlama
 - Seeder & Factory publishing / Seed ve Factory dosyaları yayınlama
 - Custom Artisan commands / Özel Artisan komutları
+- Support for Laravel's optimize command / Laravel'in optimize komutu için destek
 - Ready for testing with Orchestra Testbench / Orchestra Testbench ile test için hazır
 
 ## Installation / Kurulum
@@ -102,7 +103,7 @@ Run seeders:
 Tohumlayıcıları çalıştırın:
 
 ```bash
-php artisan package:seed
+php artisan laravelpackagestarterkit:seed
 ```
 
 Run specific seeder:
@@ -110,7 +111,33 @@ Run specific seeder:
 Belirli bir tohumlayıcıyı çalıştırın:
 
 ```bash
-php artisan package:seed --class=YourSpecificSeeder
+php artisan laravelpackagestarterkit:seed --class=YourSpecificSeeder
+```
+
+## Optimization / Optimizasyon
+
+To optimize the package:
+
+Paketi optimize etmek için:
+
+```bash
+php artisan laravelpackagestarterkit:optimize
+```
+
+To clear package optimizations:
+
+Paket optimizasyonlarını temizlemek için:
+
+```bash
+php artisan laravelpackagestarterkit:clear-optimizations
+```
+
+Laravel's optimize command will automatically run package optimizations:
+
+Laravel'in optimize komutu otomatik olarak paket optimizasyonlarını çalıştıracaktır:
+
+```bash
+php artisan optimize
 ```
 
 ## Usage / Kullanım

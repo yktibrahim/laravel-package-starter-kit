@@ -5,6 +5,8 @@ namespace LaravelPackageStarterKit;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Console\AboutCommand;
 use LaravelPackageStarterKit\Console\Commands\SeedCommand;
+use LaravelPackageStarterKit\Console\Commands\OptimizeCommand;
+use LaravelPackageStarterKit\Console\Commands\ClearOptimizationsCommand;
 
 /**
  * Laravel Package Starter Kit Service Provider
@@ -89,14 +91,29 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 SeedCommand::class,
+                OptimizeCommand::class,
+                ClearOptimizationsCommand::class,
+                // Buraya diğer komutlar eklenebilir
             ]);
+            
+            // Register optimize commands
+            // Optimize komutlarını kaydet
+            $this->optimizes(
+                optimize: 'laravelpackagestarterkit:optimize',
+                clear: 'laravelpackagestarterkit:clear-optimizations',
+            );
             
             // Register the package version with the About command
             // About komutu için paket versiyonunu kaydet
             AboutCommand::add('Laravel Package Starter Kit', fn () => [
                 'Version' => '1.0.0', 
                 'Laravel Versions' => '12.x',
-                'PHP Version' => '8.2+'
+                'PHP Version' => '8.2+',
+                'Commands' => [
+                    'laravelpackagestarterkit:seed' => 'Run package seeders',
+                    'laravelpackagestarterkit:optimize' => 'Optimize package',
+                    'laravelpackagestarterkit:clear-optimizations' => 'Clear package optimizations'
+                ]
             ]);
         }
     }

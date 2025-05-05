@@ -12,7 +12,7 @@ class SeedCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'package:seed {--class=LaravelPackageStarterKitSeeder : The class name of the seeder}';
+    protected $signature = 'laravelpackagestarterkit:seed {--class=LaravelPackageStarterKitSeeder : The class name of the seeder}';
 
     /**
      * The console command description.
