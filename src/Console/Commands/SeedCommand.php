@@ -12,7 +12,7 @@ class SeedCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'laravelpackagestarterkit:seed {--class= : The class name of the seeder}';
+    protected $signature = 'package:seed {--class=LaravelPackageStarterKitSeeder : The class name of the seeder}';
 
     /**
      * The console command description.
@@ -24,11 +24,11 @@ class SeedCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int
      */
-    public function handle(): void
+    public function handle(): int
     {
-        $class = $this->option('class') ?? 'LaravelPackageStarterKitSeeder';
+        $class = $this->option('class');
         
         $this->info('Running seeder: ' . $class);
         
@@ -39,9 +39,13 @@ class SeedCommand extends Command
             
             if ($result === 0) {
                 $this->info('Seeder run successfully!');
+                return 0;
             } else {
                 $this->error('Seeder failed to run. Make sure the class exists.');
+                return 1;
             }
         }
+        
+        return 2;
     }
 } 

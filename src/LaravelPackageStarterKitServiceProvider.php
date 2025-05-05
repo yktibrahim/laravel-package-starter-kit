@@ -30,14 +30,6 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
         $this->app->bind('laravel-package-starter-kit', function () {
             return new LaravelPackageStarterKit();
         });
-        
-        // Register commands
-        // Komutları kaydet
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                SeedCommand::class,
-            ]);
-        }
     }
 
     /**
@@ -92,12 +84,19 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
             __DIR__.'/Database/Factories' => database_path('factories'),
         ], 'laravelpackagestarterkit-factories');
 
-        // Register the package version with the About command
-        // About komutu için paket versiyonunu kaydet
+        // Register commands
+        // Komutları kaydet
         if ($this->app->runningInConsole()) {
+            $this->commands([
+                SeedCommand::class,
+            ]);
+            
+            // Register the package version with the About command
+            // About komutu için paket versiyonunu kaydet
             AboutCommand::add('Laravel Package Starter Kit', fn () => [
                 'Version' => '1.0.0', 
-                'Laravel Versions' => '12.x'
+                'Laravel Versions' => '12.x',
+                'PHP Version' => '8.2+'
             ]);
         }
     }

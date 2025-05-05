@@ -16,22 +16,4 @@ use Illuminate\Support\Facades\Artisan;
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
-
-Artisan::command('package:seed {--class=LaravelPackageStarterKitSeeder}', function () {
-    $class = $this->option('class');
-    
-    $this->info('Running seeder: ' . $class);
-    
-    $params = ['--class' => "Database\\Seeders\\{$class}"];
-    
-    if ($this->confirm('Do you wish to run this seeder?', true)) {
-        $result = Artisan::call('db:seed', $params);
-        
-        if ($result === 0) {
-            $this->info('Seeder run successfully!');
-        } else {
-            $this->error('Seeder failed to run. Make sure the class exists.');
-        }
-    }
-})->purpose('Run Laravel Package Starter Kit seeders'); 
+})->purpose('Display an inspiring quote'); 
