@@ -71,6 +71,26 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
             __DIR__.'/Database/Migrations' => database_path('migrations'),
         ], 'laravelpackagestarterkit-migrations');
 
+        // Seeders
+        // Tohumlayıcılar
+        $this->publishes([
+            __DIR__.'/Database/Seeders' => database_path('seeders'),
+        ], 'laravelpackagestarterkit-seeders');
+
+        // Factories
+        // Fabrikalar
+        $this->publishes([
+            __DIR__.'/Database/Factories' => database_path('factories'),
+        ], 'laravelpackagestarterkit-factories');
+
+        // Register Seeders Command
+        // Tohumlayıcı Komutunu Kaydet
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \LaravelPackageStarterKit\Console\Commands\SeedCommand::class,
+            ]);
+        }
+
         // Register the package version with the About command
         // About komutu için paket versiyonunu kaydet
         if ($this->app->runningInConsole()) {

@@ -17,6 +17,8 @@ Laravel paketleri oluşturmak için gerekli tüm hazır kodlarla profesyonel bir
 - Facade included / Facade dahil
 - Configuration publishing / Yapılandırma dosyası yayınlama
 - Migration publishing / Migrasyon dosyası yayınlama
+- Seeder & Factory publishing / Seed ve Factory dosyaları yayınlama
+- Custom Artisan commands / Özel Artisan komutları
 - Ready for testing with Orchestra Testbench / Orchestra Testbench ile test için hazır
 
 ## Installation / Kurulum
@@ -65,6 +67,48 @@ Migrasyonları yayınlamak için:
 
 ```bash
 php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-migrations"
+```
+
+To publish seeders:
+
+Tohumlayıcıları yayınlamak için:
+
+```bash
+php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-seeders"
+```
+
+To publish factories:
+
+Fabrikaları yayınlamak için:
+
+```bash
+php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-factories"
+```
+
+## Database / Veritabanı
+
+Run migrations:
+
+Migrasyonları çalıştırın:
+
+```bash
+php artisan migrate
+```
+
+Run seeders:
+
+Tohumlayıcıları çalıştırın:
+
+```bash
+php artisan laravelpackagestarterkit:seed
+```
+
+Run specific seeder:
+
+Belirli bir tohumlayıcıyı çalıştırın:
+
+```bash
+php artisan laravelpackagestarterkit:seed --class=YourSpecificSeeder
 ```
 
 ## Usage / Kullanım

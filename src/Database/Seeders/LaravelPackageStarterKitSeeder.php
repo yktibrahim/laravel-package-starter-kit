@@ -13,11 +13,20 @@ class LaravelPackageStarterKitSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        LaravelPackageStarterKitModel::create([
-            'name' => 'Example Record',
-            'description' => 'This is an example description.',
-        ]);
+        // You can add seeding logic here
+        // Example: creating default records
+        
+        // You can also call other seeders
+        // $this->call([
+        //     AnotherSeeder::class,
+        // ]);
+        
+        // You can use model factories
+        // \LaravelPackageStarterKit\Models\YourModel::factory(10)->create();
+        
+        // For demonstration only
+        echo "LaravelPackageStarterKitSeeder executed!" . PHP_EOL;
     }
 } 
