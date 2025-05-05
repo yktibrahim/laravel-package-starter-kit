@@ -29,25 +29,9 @@ Paketi Composer ile yükleyin:
 composer require laravel-package-starter-kit/laravel-package-starter-kit
 ```
 
-**Laravel 5.5+** will auto-discover the package.
+**Laravel 12+** will auto-discover the package.
 
-**Laravel 5.5+** paketi otomatik olarak keşfedecektir.
-
-For Laravel < 5.5, register the service provider and facade manually in `config/app.php`:
-
-Laravel < 5.5 için, servis sağlayıcı ve facade'i `config/app.php` dosyasında manuel olarak kaydedin:
-
-```php
-'providers' => [
-    // ...
-    LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider::class,
-];
-
-'aliases' => [
-    // ...
-    'LaravelPackageStarterKit' => LaravelPackageStarterKit\Facades\LaravelPackageStarterKit::class,
-];
-```
+**Laravel 12+** paketi otomatik olarak keşfedecektir.
 
 ## Configuration / Yapılandırma
 
@@ -56,7 +40,31 @@ Publish the configuration file:
 Yapılandırma dosyasını yayınlayın:
 
 ```bash
-php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="config"
+php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-config"
+```
+
+To publish views:
+
+Görünümleri yayınlamak için:
+
+```bash
+php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-views"
+```
+
+To publish translations:
+
+Çevirileri yayınlamak için:
+
+```bash
+php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-translations"
+```
+
+To publish migrations:
+
+Migrasyonları yayınlamak için:
+
+```bash
+php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-migrations"
 ```
 
 ## Usage / Kullanım
