@@ -7,14 +7,26 @@ Bu pakete yapılan tüm önemli değişiklikler bu dosyada belgelenecektir.
 ## [Unreleased] / [Yayınlanmamış]
 
 ### Added / Eklenenler
-- English: Initial package structure
-- Türkçe: İlk paket yapısı
+- English: Added Laravel 12.x support
+- Türkçe: Laravel 12.x desteği eklendi
+- English: Updated Orchestra Testbench to v10.x
+- Türkçe: Orchestra Testbench v10.x sürümüne güncellendi
+- English: Updated PHPUnit to v11.x
+- Türkçe: PHPUnit v11.x sürümüne güncellendi
 
-## [1.0.0] - YYYY-MM-DD
+## [1.0.0] - 2024-06-15
 
 ### Added / Eklenenler
-- English: Initial release
-- Türkçe: İlk sürüm 
+- English: Initial package structure
+- Türkçe: İlk paket yapısı
+- English: Service Provider
+- Türkçe: Servis Sağlayıcı
+- English: Facade
+- Türkçe: Facade
+- English: Custom Artisan Commands
+- Türkçe: Özel Artisan Komutları
+- English: Laravel Optimize integration
+- Türkçe: Laravel Optimize entegrasyonu
 
 ## Developer / Geliştirici
 

@@ -4,6 +4,7 @@ namespace LaravelPackageStarterKit\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 class SeedCommand extends Command
 {
@@ -40,17 +41,17 @@ class SeedCommand extends Command
                 
                 if ($result === 0) {
                     $this->components->info('Seeder run successfully!');
-                    return Command::SUCCESS;
+                    return SymfonyCommand::SUCCESS;
                 } else {
                     $this->components->error('Seeder failed to run. Make sure the class exists.');
-                    return Command::FAILURE;
+                    return SymfonyCommand::FAILURE;
                 }
             } catch (\Exception $e) {
                 $this->components->error('Error running seeder: ' . $e->getMessage());
-                return Command::FAILURE;
+                return SymfonyCommand::FAILURE;
             }
         }
         
-        return Command::INVALID;
+        return SymfonyCommand::INVALID;
     }
 } 

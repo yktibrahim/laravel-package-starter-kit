@@ -108,14 +108,15 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
         // Register commands in console only
         // Komutları sadece konsolda kaydet
         if ($this->app->runningInConsole()) {
-            // Optimize işlemleri için Laravel'in optimize komutuna eklemeler yapıyoruz
-            // Laravel 12.x'te paket optimizasyonları için önerilen yöntem
+            // Laravel 12.x için optimize event dinleyicileri
             $this->app->booted(function () {
-                $this->app->make('events')->listen('artisan.command.optimize', function () {
+                // Laravel 12'de optimize eventi dinle
+                $this->app->make('events')->listen('artisan.optimize', function () {
                     $this->app->make(OptimizeCommand::class)->handle();
                 });
                 
-                $this->app->make('events')->listen('artisan.command.optimize:clear', function () {
+                // Laravel 12'de optimize:clear eventi dinle
+                $this->app->make('events')->listen('artisan.optimize:clear', function () {
                     $this->app->make(ClearOptimizationsCommand::class)->handle();
                 });
             });
@@ -133,19 +134,5 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
                 ]
             ]);
         }
-    }
-    
-    /**
-     * Laravel 12.x'te olmayan optimizes metodunun yerine kullanılan yardımcı metod.
-     * Paket test edilirken bu metod kullanıldığında hata vermemesi için boş bir implementasyon.
-     *
-     * @param string $optimize
-     * @param string $clear
-     * @return void
-     */
-    protected function optimizes(string $optimize = '', string $clear = ''): void
-    {
-        // Bu metod sadece geriye dönük uyumluluk için burada. 
-        // Gerçek optimize işlemleri event dinleyicileriyle yapılıyor.
     }
 } 

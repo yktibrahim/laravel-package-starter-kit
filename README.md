@@ -4,7 +4,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-package-starter-kit/laravel-package-starter-kit.svg)](https://packagist.org/packages/laravel-package-starter-kit/laravel-package-starter-kit)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/laravel-package-starter-kit/laravel-package-starter-kit/run-tests.yml?branch=main)](https://github.com/laravel-package-starter-kit/laravel-package-starter-kit/actions)
 [![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-blue)](composer.json)
-[![Laravel Version](https://img.shields.io/badge/Laravel-12.0%2B-red)](composer.json)
+[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-red)](composer.json)
 
 Professional starter kit for creating Laravel packages with all necessary boilerplate.
 

@@ -4,6 +4,7 @@ namespace LaravelPackageStarterKit\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\Console\Command\Command as SymfonyCommand;
 
 class OptimizeCommand extends Command
 {
@@ -35,6 +36,6 @@ class OptimizeCommand extends Command
         
         $this->components->info('Laravel Package Starter Kit successfully optimized!');
         
-        return Command::SUCCESS;
+        return SymfonyCommand::SUCCESS;
     }
 } 
