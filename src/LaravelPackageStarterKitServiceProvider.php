@@ -135,19 +135,4 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
             ]);
         }
     }
-    
-    /**
-     * Laravel'in ServiceProvider sınıfındaki optimizes metodunu override etmeyi sağlar.
-     * Bu metod parent sınıfın imzası ile aynı olmalıdır.
-     *
-     * @param string|null $optimize
-     * @param string|null $clear
-     * @param string|null $key
-     * @return void
-     */
-    protected function optimizes(?string $optimize = null, ?string $clear = null, ?string $key = null): void
-    {
-        // Bu metod sadece parent'ın metodunu çağırır, asıl optimize işlemleri event dinleyicileriyle yapılır
-        parent::optimizes($optimize, $clear, $key);
-    }
 } 
