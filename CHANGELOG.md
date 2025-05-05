@@ -13,6 +13,8 @@ Bu pakete yapılan tüm önemli değişiklikler bu dosyada belgelenecektir.
 - Türkçe: Orchestra Testbench v10.x sürümüne güncellendi
 - English: Updated PHPUnit to v11.x
 - Türkçe: PHPUnit v11.x sürümüne güncellendi
+- English: Removed optimize commands to simplify package
+- Türkçe: Paketi basitleştirmek için optimize komutları kaldırıldı
 
 ## [1.0.0] - 2024-06-15
 
@@ -23,10 +25,8 @@ Bu pakete yapılan tüm önemli değişiklikler bu dosyada belgelenecektir.
 - Türkçe: Servis Sağlayıcı
 - English: Facade
 - Türkçe: Facade
-- English: Custom Artisan Commands
-- Türkçe: Özel Artisan Komutları
-- English: Laravel Optimize integration
-- Türkçe: Laravel Optimize entegrasyonu
+- English: Custom Artisan Commands (Seed)
+- Türkçe: Özel Artisan Komutları (Seed)
 
 ## Developer / Geliştirici
 

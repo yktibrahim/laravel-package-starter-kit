@@ -2,8 +2,8 @@
 
 namespace LaravelPackageStarterKit;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Console\AboutCommand;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use LaravelPackageStarterKit\Console\Commands\SeedCommand;
 
 /**
@@ -13,7 +13,7 @@ use LaravelPackageStarterKit\Console\Commands\SeedCommand;
  * @author İbrahim Yakut <yktibrahim@gmail.com>
  * @package LaravelPackageStarterKit
  */
-class LaravelPackageStarterKitServiceProvider extends ServiceProvider
+class LaravelPackageStarterKitServiceProvider extends BaseServiceProvider
 {
     /**
      * Register any application services.

@@ -20,8 +20,7 @@ Laravel paketleri oluşturmak için gerekli tüm hazır kodlarla profesyonel bir
 - Configuration publishing / Yapılandırma dosyası yayınlama
 - Migration publishing / Migrasyon dosyası yayınlama
 - Seeder & Factory publishing / Seed ve Factory dosyaları yayınlama
-- Custom Artisan commands / Özel Artisan komutları
-- Support for Laravel's optimize command / Laravel'in optimize komutu için destek
+- Custom Artisan commands (Seed) / Özel Artisan komutları (Seed)
 - Ready for testing with Orchestra Testbench / Orchestra Testbench ile test için hazır
 
 ## Installation / Kurulum
@@ -116,33 +115,6 @@ Belirli bir tohumlayıcıyı çalıştırın:
 php artisan laravelpackagestarterkit:seed --class=YourSpecificSeeder
 ```
 
-## Optimization / Optimizasyon
-
-To optimize the package:
-
-Paketi optimize etmek için:
-
-```bash
-php artisan laravelpackagestarterkit:optimize
-```
-
-To clear package optimizations:
-
-Paket optimizasyonlarını temizlemek için:
-
-```bash
-php artisan laravelpackagestarterkit:clear-optimizations
-```
-
-Laravel's optimize command will automatically run package optimizations:
-
-Laravel'in optimize komutu otomatik olarak paket optimizasyonlarını çalıştıracaktır:
-
-```bash
-php artisan optimize   # Bu komut laravelpackagestarterkit:optimize komutunu da çalıştırır
-php artisan optimize:clear   # Bu komut laravelpackagestarterkit:clear-optimizations komutunu da çalıştırır
-```
-
 ## Usage / Kullanım
 
 Usage instructions for the package.
@@ -176,10 +148,6 @@ Yüklemeden sonra komutlar kullanılamıyorsa, önbelleği temizlemeyi deneyin:
 ```bash
 php artisan optimize:clear
 ```
-
-For Laravel 12+, make sure your command classes are registered in the ServiceProvider and also listed in the `commands` section of the `extra.laravel` section in your `composer.json` file.
-
-Laravel 12+ için, komut sınıflarınızın ServiceProvider'da kaydedildiğinden ve ayrıca `composer.json` dosyanızdaki `extra.laravel` bölümünün `commands` kısmında listelendiğinden emin olun.
 
 ## Changelog / Değişiklik Kaydı
 
