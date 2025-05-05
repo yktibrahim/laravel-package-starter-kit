@@ -37,12 +37,7 @@
             ],
             "aliases": {
                 "LaravelPackageStarterKit": "LaravelPackageStarterKit\\Facades\\LaravelPackageStarterKit"
-            },
-            "commands": [
-                "LaravelPackageStarterKit\\Console\\Commands\\SeedCommand",
-                "LaravelPackageStarterKit\\Console\\Commands\\OptimizeCommand",
-                "LaravelPackageStarterKit\\Console\\Commands\\ClearOptimizationsCommand"
-            ]
+            }
         }
     },
     "scripts": {

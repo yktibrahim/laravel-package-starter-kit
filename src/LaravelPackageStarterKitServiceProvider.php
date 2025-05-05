@@ -5,8 +5,6 @@ namespace LaravelPackageStarterKit;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Console\AboutCommand;
 use LaravelPackageStarterKit\Console\Commands\SeedCommand;
-use LaravelPackageStarterKit\Console\Commands\OptimizeCommand;
-use LaravelPackageStarterKit\Console\Commands\ClearOptimizationsCommand;
 
 /**
  * Laravel Package Starter Kit Service Provider
@@ -33,8 +31,6 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
      */
     protected $commands = [
         SeedCommand::class,
-        OptimizeCommand::class,
-        ClearOptimizationsCommand::class,
     ];
 
     /**
@@ -108,19 +104,6 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
         // Register commands in console only
         // Komutları sadece konsolda kaydet
         if ($this->app->runningInConsole()) {
-            // Laravel 12.x için optimize event dinleyicileri
-            $this->app->booted(function () {
-                // Laravel 12'de optimize eventi dinle
-                $this->app->make('events')->listen('artisan.optimize', function () {
-                    $this->app->make(OptimizeCommand::class)->handle();
-                });
-                
-                // Laravel 12'de optimize:clear eventi dinle
-                $this->app->make('events')->listen('artisan.optimize:clear', function () {
-                    $this->app->make(ClearOptimizationsCommand::class)->handle();
-                });
-            });
-            
             // Register the package version with the About command
             // About komutu için paket versiyonunu kaydet
             AboutCommand::add('Laravel Package Starter Kit', fn () => [
@@ -128,9 +111,7 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
                 'Laravel Versions' => '12.x',
                 'PHP Version' => '8.2+',
                 'Commands' => [
-                    'laravelpackagestarterkit:seed' => 'Run package seeders',
-                    'laravelpackagestarterkit:optimize' => 'Optimize package',
-                    'laravelpackagestarterkit:clear-optimizations' => 'Clear package optimizations'
+                    'laravelpackagestarterkit:seed' => 'Run package seeders'
                 ]
             ]);
         }
