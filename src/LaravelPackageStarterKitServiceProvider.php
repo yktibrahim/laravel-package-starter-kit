@@ -4,6 +4,7 @@ namespace LaravelPackageStarterKit;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Console\AboutCommand;
+use LaravelPackageStarterKit\Console\Commands\SeedCommand;
 
 /**
  * Laravel Package Starter Kit Service Provider
@@ -29,6 +30,14 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
         $this->app->bind('laravel-package-starter-kit', function () {
             return new LaravelPackageStarterKit();
         });
+        
+        // Register commands
+        // Komutları kaydet
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                SeedCommand::class,
+            ]);
+        }
     }
 
     /**
@@ -82,14 +91,6 @@ class LaravelPackageStarterKitServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/Database/Factories' => database_path('factories'),
         ], 'laravelpackagestarterkit-factories');
-
-        // Register Seeders Command
-        // Tohumlayıcı Komutunu Kaydet
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                \LaravelPackageStarterKit\Console\Commands\SeedCommand::class,
-            ]);
-        }
 
         // Register the package version with the About command
         // About komutu için paket versiyonunu kaydet
