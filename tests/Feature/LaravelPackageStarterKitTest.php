@@ -3,6 +3,7 @@
 namespace LaravelPackageStarterKit\Tests\Feature;
 
 use Orchestra\Testbench\TestCase;
+use LaravelPackageStarterKit\LaravelPackageStarterKit;
 use LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider;
 
 class LaravelPackageStarterKitTest extends TestCase
@@ -45,15 +46,15 @@ class LaravelPackageStarterKitTest extends TestCase
     }
 
     /**
-     * Test the main page route.
-     * Ana sayfa route testini gerçekleştirir.
+     * Test the package instance.
+     * Paket örneğini test et.
      *
      * @return void
      */
     public function testBasicTest()
     {
-        $response = $this->get('laravelpackagestarterkit');
-
-        $response->assertStatus(200);
+        $packageInstance = $this->app->make('laravel-package-starter-kit');
+        $this->assertInstanceOf(LaravelPackageStarterKit::class, $packageInstance);
+        $this->assertEquals('Laravel Package Starter Kit is working!', $packageInstance->doSomething());
     }
 } 

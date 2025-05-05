@@ -49,5 +49,6 @@ class LaravelPackageStarterKitUnitTest extends TestCase
     public function testConfigIsLoaded()
     {
         $this->assertEquals('Laravel Package Starter Kit', config('laravelpackagestarterkit.name'));
+        $this->assertTrue(config('laravelpackagestarterkit.enabled'));
     }
 } 

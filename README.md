@@ -139,7 +139,8 @@ Laravel's optimize command will automatically run package optimizations:
 Laravel'in optimize komutu otomatik olarak paket optimizasyonlarını çalıştıracaktır:
 
 ```bash
-php artisan optimize
+php artisan optimize   # Bu komut laravelpackagestarterkit:optimize komutunu da çalıştırır
+php artisan optimize:clear   # Bu komut laravelpackagestarterkit:clear-optimizations komutunu da çalıştırır
 ```
 
 ## Usage / Kullanım
