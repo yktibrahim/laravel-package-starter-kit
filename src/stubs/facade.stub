@@ -1,0 +1,28 @@
+<?php
+
+namespace {{ namespace }}\Facades;
+
+use Illuminate\Support\Facades\Facade;
+
+/**
+ * {{ packageName }} Facade
+ *
+ * @author {{ authorName }} <{{ authorEmail }}>
+ * @package {{ namespace }}\Facades
+ * 
+ * @method static string doSomething()
+ * @method static string getVersion()
+ * @see \{{ namespace }}\{{ className }}
+ */
+class {{ className }} extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
+    protected static function getFacadeAccessor(): string
+    {
+        return '{{ bindName }}';
+    }
+} 

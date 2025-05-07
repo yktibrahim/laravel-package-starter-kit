@@ -1,0 +1,39 @@
+<?php
+
+namespace {{ namespace }};
+
+/**
+ * {{ packageName }} main class
+ *
+ * @author {{ authorName }} <{{ authorEmail }}>
+ * @package {{ namespace }}
+ */
+class {{ className }}
+{
+    /**
+     * Package version
+     * 
+     * @var string
+     */
+    const VERSION = '1.0.0';
+
+    /**
+     * Example method
+     *
+     * @return string
+     */
+    public function doSomething(): string
+    {
+        return '{{ packageName }} is working!';
+    }
+
+    /**
+     * Returns package version
+     * 
+     * @return string
+     */
+    public function getVersion(): string
+    {
+        return self::VERSION;
+    }
+} 

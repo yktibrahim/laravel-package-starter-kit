@@ -20,8 +20,9 @@ Laravel paketleri oluşturmak için gerekli tüm hazır kodlarla profesyonel bir
 - Configuration publishing / Yapılandırma dosyası yayınlama
 - Migration publishing / Migrasyon dosyası yayınlama
 - Seeder & Factory publishing / Seed ve Factory dosyaları yayınlama
-- Custom Artisan commands (Seed) / Özel Artisan komutları (Seed)
+- Custom Artisan commands / Özel Artisan komutları
 - Ready for testing with Orchestra Testbench / Orchestra Testbench ile test için hazır
+- **Package Setup Wizard / Paket Kurulum Sihirbazı** - Kendi paketinizi oluşturmak için
 
 ## Installation / Kurulum
 
@@ -39,6 +40,53 @@ composer require laravel-package-starter-kit/laravel-package-starter-kit
 
 > **Not**: Paket yüklendikten sonra, varsa önbelleği temizlemeniz gerekebilir: `php artisan optimize:clear`
 
+## Creating Your Own Package / Kendi Paketinizi Oluşturma
+
+This starter kit includes a wizard to help you customize the package for your own needs:
+
+Bu başlangıç kiti, paketi kendi ihtiyaçlarınıza göre özelleştirmenize yardımcı olacak bir sihirbaz içerir:
+
+```bash
+php artisan package:setup vendor/package-name
+```
+
+The wizard will ask you several questions to customize your package:
+
+Sihirbaz, paketinizi özelleştirmek için size birkaç soru soracaktır:
+
+- Package name (in format vendor/package-name) / Paket adı (vendor/package-name formatında)
+- Namespace (default: MyPackage) / Namespace (varsayılan: MyPackage)
+- Author name / Yazar adı
+- Author email / Yazar e-posta adresi
+- Author website (optional) / Yazar web sitesi (isteğe bağlı)
+- Package description / Paket açıklaması
+
+You can also provide these options directly in the command:
+
+Bu seçenekleri doğrudan komutta da sağlayabilirsiniz:
+
+```bash
+php artisan package:setup vendor/package-name --namespace=MyNamespace --author_name="Your Name" --author_email=email@example.com --description="Package description"
+```
+
+After running the setup, the package files will be updated with your information:
+
+Kurulumu çalıştırdıktan sonra, paket dosyaları bilgilerinizle güncellenecektir:
+
+- composer.json
+- Service Provider
+- Facades
+- Configuration files
+- All namespaces in PHP files
+
+Finally, run:
+
+Son olarak, çalıştırın:
+
+```bash
+composer dump-autoload
+```
+
 ## Configuration / Yapılandırma
 
 Publish the configuration file:
@@ -46,7 +94,7 @@ Publish the configuration file:
 Yapılandırma dosyasını yayınlayın:
 
 ```bash
-php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-config"
+php artisan vendor:publish --provider="YourNamespace\YourPackageServiceProvider" --tag="your-package-config"
 ```
 
 To publish views:
@@ -54,7 +102,7 @@ To publish views:
 Görünümleri yayınlamak için:
 
 ```bash
-php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-views"
+php artisan vendor:publish --provider="YourNamespace\YourPackageServiceProvider" --tag="your-package-views"
 ```
 
 To publish translations:
@@ -62,7 +110,7 @@ To publish translations:
 Çevirileri yayınlamak için:
 
 ```bash
-php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-translations"
+php artisan vendor:publish --provider="YourNamespace\YourPackageServiceProvider" --tag="your-package-translations"
 ```
 
 To publish migrations:
@@ -70,7 +118,7 @@ To publish migrations:
 Migrasyonları yayınlamak için:
 
 ```bash
-php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-migrations"
+php artisan vendor:publish --provider="YourNamespace\YourPackageServiceProvider" --tag="your-package-migrations"
 ```
 
 To publish seeders:
@@ -78,7 +126,7 @@ To publish seeders:
 Tohumlayıcıları yayınlamak için:
 
 ```bash
-php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-seeders"
+php artisan vendor:publish --provider="YourNamespace\YourPackageServiceProvider" --tag="your-package-seeders"
 ```
 
 To publish factories:
@@ -86,7 +134,7 @@ To publish factories:
 Fabrikaları yayınlamak için:
 
 ```bash
-php artisan vendor:publish --provider="LaravelPackageStarterKit\LaravelPackageStarterKitServiceProvider" --tag="laravelpackagestarterkit-factories"
+php artisan vendor:publish --provider="YourNamespace\YourPackageServiceProvider" --tag="your-package-factories"
 ```
 
 ## Database / Veritabanı
@@ -99,34 +147,20 @@ Migrasyonları çalıştırın:
 php artisan migrate
 ```
 
-Run seeders:
-
-Tohumlayıcıları çalıştırın:
-
-```bash
-php artisan laravelpackagestarterkit:seed
-```
-
-Run specific seeder:
-
-Belirli bir tohumlayıcıyı çalıştırın:
-
-```bash
-php artisan laravelpackagestarterkit:seed --class=YourSpecificSeeder
-```
-
 ## Usage / Kullanım
 
-Usage instructions for the package.
+Once you've set up your package, you can use it as follows:
 
-Paket için kullanım talimatları.
+Paketinizi kurduktan sonra, şu şekilde kullanabilirsiniz:
 
 ```php
 // Example code / Örnek kod
-LaravelPackageStarterKit::doSomething();
+use YourNamespace\Facades\YourPackage;
+
+YourPackage::doSomething();
 
 // Get package version / Paket versiyonunu alma
-$version = LaravelPackageStarterKit::getVersion();
+$version = YourPackage::getVersion();
 ```
 
 ## Testing / Test

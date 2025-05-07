@@ -1,0 +1,98 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Foundation\Console\AboutCommand;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use {{ namespace }}\Console\ExampleCommand;
+use {{ namespace }}\Console\SetupPackageCommand;
+
+/**
+ * {{ packageName }} Service Provider
+ *
+ * @author {{ authorName }} <{{ authorEmail }}>
+ * @package {{ namespace }}
+ */
+class {{ className }}ServiceProvider extends BaseServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        // Bind the main package class
+        $this->app->bind('{{ bindName }}', function () {
+            return new {{ className }}();
+        });
+
+        // Merge config
+        $this->mergeConfigFrom(
+            __DIR__.'/Config/{{ configFileName }}.php', '{{ configFileName }}'
+        );
+        
+        // Register commands
+        $this->app->singleton(ExampleCommand::class, function () {
+            return new ExampleCommand();
+        });
+        
+        // Setup command - if file exists
+        if (file_exists(__DIR__ . '/Console/SetupPackageCommand.php')) {
+            $this->app->singleton(SetupPackageCommand::class, function () {
+                return new SetupPackageCommand();
+            });
+        }
+
+        if ($this->app->runningInConsole()) {
+            $commands = [ExampleCommand::class];
+            
+            // Setup command - if file exists
+            if (file_exists(__DIR__ . '/Console/SetupPackageCommand.php')) {
+                $commands[] = SetupPackageCommand::class;
+            }
+            
+            $this->commands($commands);
+        }
+    }
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        // Configuration publishing
+        $this->publishes([
+            __DIR__.'/Config/{{ configFileName }}.php' => config_path('{{ configFileName }}.php'),
+        ], '{{ tagPrefix }}-config');
+
+        // Views
+        $this->loadViewsFrom(__DIR__.'/Resources/Views', '{{ viewNamespace }}');
+        $this->publishes([
+            __DIR__.'/Resources/Views' => resource_path('views/vendor/{{ viewNamespace }}'),
+        ], '{{ tagPrefix }}-views');
+
+        // Translations
+        $this->loadTranslationsFrom(__DIR__.'/Resources/Lang', '{{ viewNamespace }}');
+        $this->publishes([
+            __DIR__.'/Resources/Lang' => resource_path('lang/vendor/{{ viewNamespace }}'),
+        ], '{{ tagPrefix }}-translations');
+
+        // Routes
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+
+        // Migrations
+        $this->loadMigrationsFrom(__DIR__.'/Database/Migrations');
+        $this->publishes([
+            __DIR__.'/Database/Migrations' => database_path('migrations'),
+        ], '{{ tagPrefix }}-migrations');
+
+        // Register package info
+        if ($this->app->runningInConsole()) {
+            AboutCommand::add('{{ packageName }}', fn () => [
+                'Version' => '1.0.0', 
+                'Laravel Versions' => '12.x',
+                'PHP Version' => '8.2+'
+            ]);
+        }
+    }
+} 

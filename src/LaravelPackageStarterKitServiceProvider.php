@@ -4,7 +4,8 @@ namespace LaravelPackageStarterKit;
 
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use LaravelPackageStarterKit\Console\Commands\SeedCommand;
+use LaravelPackageStarterKit\Console\ExampleCommand;
+use LaravelPackageStarterKit\Console\SetupPackageCommand;
 
 /**
  * Laravel Package Starter Kit Service Provider
@@ -31,13 +32,18 @@ class LaravelPackageStarterKitServiceProvider extends BaseServiceProvider
         );
 
         // Register commands
-        $this->app->singleton(SeedCommand::class, function () {
-            return new SeedCommand();
+        $this->app->singleton(ExampleCommand::class, function () {
+            return new ExampleCommand();
+        });
+        
+        $this->app->singleton(SetupPackageCommand::class, function () {
+            return new SetupPackageCommand();
         });
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                SeedCommand::class,
+                ExampleCommand::class,
+                SetupPackageCommand::class,
             ]);
         }
     }
@@ -89,7 +95,7 @@ class LaravelPackageStarterKitServiceProvider extends BaseServiceProvider
                 'Laravel Versions' => '12.x',
                 'PHP Version' => '8.2+',
                 'Commands' => [
-                    'laravelpackagestarterkit:seed' => 'Run package seeders'
+                    'laravelpackagestarterkit:example-command' => 'Run package example command'
                 ]
             ]);
         }
